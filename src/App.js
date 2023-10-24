@@ -7,6 +7,7 @@ import { ViewSiteEx } from "./components/ex04/ViewSiteEx";
 import { Ex05 } from "./components/ex05/Ex05";
 import { Ex06 } from "./components/ex06/Ex06";
 import { Ex07 } from "./components/ex07/Ex07";
+import { Ex09 } from "./components/ex09/Ex09";
 
 const App = () => {
   return (
@@ -33,8 +34,12 @@ const App = () => {
       {/* 5일차 */}
 
       {/* <Ex06 /> */}
+      {/* 6일차 */}
 
-      <Ex07 />
+      {/* <Ex07 /> */}
+      {/* 7일차 */}
+
+      <Ex09 />
     </div>
   );
 };
