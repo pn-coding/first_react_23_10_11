@@ -30,6 +30,7 @@ const Container = styled.div`
   width: 100%;
   background-color: ${colors.darkGray};
   padding: 50px 20px;
+  position: relative;
 `;
 
 export const MusicApp = () => {
