@@ -9,6 +9,7 @@ import { Ex06 } from "./components/ex06/Ex06";
 import { Ex07 } from "./components/ex07/Ex07";
 import { Ex09 } from "./components/ex09/Ex09";
 import { Ex10 } from "./components/ex10/Ex10";
+import { Ex11 } from "./components/ex11/Ex11";
 
 const App = () => {
   return (
@@ -43,7 +44,9 @@ const App = () => {
       {/* <Ex09 /> */}
       {/* 9일차 */}
 
-      <Ex10 />
+      {/* <Ex10 /> */}
+
+      <Ex11 />
     </div>
   );
 };
