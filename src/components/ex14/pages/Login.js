@@ -51,14 +51,21 @@ const Button = styled.button`
   font-size: 18px;
   font-weight: 600;
   color: white;
+  opacity: ${(props) => (props.$isActive ? 1 : 0.5)};
+  cursor: ${(props) => (props.$isActive ? "pointer" : "default")};
 `;
 
 export const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange",
+  });
+
+  console.log(isValid);
+  // =>유효성 검사 후 boolean값으로 반환함
 
   //   console.log(errors && errors.username && errors.username.message);
   //   console.log(errors?.username?.message);
@@ -87,15 +94,40 @@ export const Login = () => {
 
         <Input
           {...register("password", {
-            required: true,
+            required: "패스워드는 필수 입니다.",
+            minLength: {
+              value: 8,
+              message: "비밀번호는 8자리 이상 작성해 주세요.",
+            },
+            pattern: {
+              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+              message: "숫자와 문자를 합쳐서 사용 가능",
+            },
           })}
-          type="password"
+          type="text"
           placeholder="패스워드"
         />
         <ErrorMessage message={errors?.password?.message} />
 
-        <Button>로그인</Button>
+        <Button $isActive={isValid}>로그인</Button>
       </Form>
     </Wrap>
   );
 };
+
+// *useForm
+// =>폼 관련 패키지
+// ex)
+// const {
+//   register, // input태그 name 및 등록 역할
+//   handleSubmit, // form태그 이벤트 등록
+//   formState:{errors, isValid} // form상태를 관리
+//                               // errors: form 유효성 검사 후 에러를 객체로 반환함,
+//                               // isValid: form상태가 유효한지 boolean값으로 반환
+// } = useForm({
+//   mode: "onChange" // form 모드로 유효성 검사를 어떻게 처리할지 값은 작성 할 수 있음
+// });
+
+// <input {...register("name명", {
+//   required: "" // 현 input값이 필수값인지 아닌지 boolean값 및 문자열로 작성 가능
+// })} />
